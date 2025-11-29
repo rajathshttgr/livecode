@@ -20,7 +20,9 @@ services:
       - redisdata:/data
 
   backend:
-    build: ./backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
     container_name: livecode-backend
     ports:
       - "8000:8000"
