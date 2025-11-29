@@ -13,6 +13,8 @@ class Settings(BaseSettings):
     REDIS_HOST: str
     REDIS_PORT: int
 
+    REDIS_URL: str | None = None
+
     class Config:
         env_file=".env"
         extra = "ignore"
