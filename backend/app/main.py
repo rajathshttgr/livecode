@@ -5,7 +5,6 @@ import logging
 from app.core.db import Base, engine
 from app.routers.api.main import api_router
 from app.routers.ws.main import ws_router
-
 from app.core.config import settings
 
 logging.basicConfig(level=logging.INFO)
@@ -17,9 +16,14 @@ app = FastAPI(
     version="1.0.0",
 )
 
+if "," in settings.CORS_ORIGINS:
+    origins_list = [origin.strip() for origin in settings.CORS_ORIGINS.split(",")]
+else:
+    origins_list = [settings.CORS_ORIGINS]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[settings.CORS_ORIGINS],          
+    allow_origins=origins_list, 
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
