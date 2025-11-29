@@ -6,6 +6,8 @@ from app.core.db import Base, engine
 from app.routers.api.main import api_router
 from app.routers.ws.main import ws_router
 
+from app.core.config import settings
+
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("livecode")
 
@@ -17,7 +19,7 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],          
+    allow_origins=[settings.CORS_ORIGINS],          
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
