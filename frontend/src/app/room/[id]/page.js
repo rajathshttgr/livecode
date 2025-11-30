@@ -33,13 +33,17 @@ export default function RoomPage() {
           }
         }
 
-        const session = await sendRequest({
-          route: "/room/session",
-          method: "POST",
-        });
+        try {
+          const data = await sendRequest({
+            route: "/room/session",
+            method: "POST",
+          });
+          setCurrentUser(JSON.stringify(data));
 
-        localStorage.setItem("livecode_session", JSON.stringify(session));
-        setCurrentUser(session);
+          localStorage.setItem("livecode_session", JSON.stringify(data));
+        } catch (err) {
+          console.error("Error fetching session data:", err);
+        }
       } catch (err) {
         console.error("Failed to create session:", err);
         router.push("/");

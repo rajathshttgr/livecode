@@ -47,7 +47,7 @@ export default function EditorWrapper({ language, theme, socket, remoteCode }) {
         });
         socket.send(message);
       }
-    }, 100);
+    }, 150);
   };
 
   return (

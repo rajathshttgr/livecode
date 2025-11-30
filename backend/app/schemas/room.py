@@ -19,3 +19,13 @@ class RoomResponse(BaseModel):
     class Config:
         from_attributes = True
 
+class RoomGetResponse(BaseModel):
+    content: str
+    session_id: str
+    created_at: datetime
+    updated_at: datetime | None = None
+    room_id: str
+    id: str
+
+    class Config:
+        from_attributes = True
