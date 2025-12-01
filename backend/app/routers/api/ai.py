@@ -1,13 +1,11 @@
 from fastapi import APIRouter
-from app.schemas import AutoCompleteRequest
+from app.schemas import AutoCompleteRequest, AutoCompleteResponse
 
 router = APIRouter() 
 
-@router.post("/autocomplete")
+@router.post("/autocomplete", response_model=AutoCompleteResponse)
 def auto_complete(user_request: AutoCompleteRequest):
+    # Dummy implementation for auto-complete
     return {
-        "suggestion": "a + b",
-        "context": user_request.context,
-        "language": user_request.language
+        "suggestion": "def example_function():\n   return \"Hello, World!\"\n example_function()"
     }
-
