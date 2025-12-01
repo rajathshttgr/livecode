@@ -1,0 +1,35 @@
+# Git
+
+.git
+.gitignore
+
+# Python caches
+
+**pycache**/
+\*.pyc
+
+# Node modules
+
+frontend/node_modules/
+frontend/.next/
+
+# Python venv
+
+backend/venv/
+backend/.venv/
+
+# Docker
+
+**/Dockerfile\*
+**/docker-compose\*
+\*.log
+
+# Env files
+
+_.env
+_.env.local
+
+# OS
+
+.DS_Store
+Thumbs.db

@@ -44,3 +44,9 @@ uvicorn app.main:app --reload
 - [ ] Handle Edit Conflicts (Prevent overwrite issues using locking or OT)
 - [ ] Rate limiting and autocomplete credit tracking
 - [ ] Add unit tests
+
+### **Special Cases: Reset Docker**
+
+```bash
+docker system prune -a --volumes -f
+```

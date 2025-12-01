@@ -1,0 +1,37 @@
+# Bytecode
+
+**pycache**/
+\*.pyc
+
+# Virtual env
+
+venv/
+.venv/
+
+# Git
+
+.git
+.gitignore
+
+# Env & config
+
+.env
+\*.env
+
+# IDE
+
+.vscode/
+.idea/
+
+# OS
+
+.DS_Store
+Thumbs.db
+
+# Logs
+
+\*.log
+
+# Tests (optional)
+
+tests/
