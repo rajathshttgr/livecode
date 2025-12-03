@@ -13,5 +13,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # PROD: Uses $PORT variable and removes --reload
-CMD sh -c "uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}"
+CMD ["sh", "-c", "gunicorn app.main:app -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:${PORT:-8000} --workers 4 --timeout 120"]
+
 

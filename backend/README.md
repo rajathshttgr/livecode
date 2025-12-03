@@ -27,7 +27,13 @@ venv\Scripts\activate         # Windows PowerShell
 pip install -r requirements.txt
 ```
 
-### 4. Start FastAPI
+### 4. Set up environment variables
+
+```bash
+cp .env.example .env
+```
+
+### 5. Start FastAPI
 
 ```bash
 uvicorn app.main:app --reload
