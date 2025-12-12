@@ -1,13 +1,23 @@
-FROM node:20-alpine
-
+FROM node:20-alpine AS builder
 WORKDIR /app
 
-# Install dependencies first (better caching)
 COPY package.json package-lock.json* ./
-RUN npm install
+RUN npm ci
 
-# Copy source code
 COPY . .
+RUN npm run build
 
-# Run Next.js in dev mode
-CMD ["npm", "run", "dev"]
+FROM node:20-alpine
+WORKDIR /app
+
+ENV NODE_ENV=production
+
+COPY --from=builder /app/package*.json ./
+RUN npm ci --production
+
+COPY --from=builder /app/.next ./.next
+COPY --from=builder /app/public ./public
+
+EXPOSE 3000
+
+CMD ["npm", "run", "start"]
